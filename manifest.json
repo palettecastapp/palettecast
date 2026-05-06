@@ -1,13 +1,26 @@
 {
-  "background_color": "#c9a84c",
-  "description": "PaletteCast - Acrylic Pour Painting Randomizer",
-  "dir": "ltr",
-  "display": "standalone",
-  "name": "palettecast",
-  "orientation": "any",
+  "name": "PaletteCast",
+  "short_name": "PaletteCast",
+  "description": "Acrylic pour painting color and technique randomizer",
+  "start_url": "/",
   "scope": "/",
-  "short_name": "palettecast",
-  "start_url": "https://palettecastapp.github.io/palettecast/",
-  "theme_color": "#0d0d0d",
-  "id": "com.palettecastapp.palettecast"
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0d0d0d",
+  "theme_color": "#c9a84c",
+  "id": "com.palettecastapp.palettecast",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
 }
