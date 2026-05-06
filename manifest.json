@@ -1,0 +1,13 @@
+{
+  "background_color": "#c9a84c",
+  "description": "PaletteCast - Acrylic Pour Painting Randomizer",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "palettecast",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "palettecast",
+  "start_url": "https://palettecastapp.github.io/palettecast/",
+  "theme_color": "#0d0d0d",
+  "id": "com.palettecastapp.palettecast"
+}
