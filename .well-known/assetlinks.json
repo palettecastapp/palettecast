@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.palettecastapp.palettecast",
+        "sha256_cert_fingerprints": ["A5:23:A4:9C:69:76:BC:7D:00:A2:8F:1B:15:82:F6:BB:10:9A:DD:F8:38:F1:27:FA:28:94:94:67:E3:E1:D1:7E"]
+      }
+    }]
