@@ -1,4 +1,4 @@
-<script>
+
 // ─── DATA ───────────────────────────────────────────────────────────────────
 
 const BASE_COLORS = [
@@ -558,5 +558,3 @@ document.documentElement.style.setProperty('--grad', grad);
 
 renderFavorites();
 checkWelcome();
-</script>
-<script>   if (typeof navigator.serviceWorker !== 'undefined') {     navigator.serviceWorker.register('sw.js')   } </script>
