@@ -7,6 +7,15 @@ const BASE_COLORS = [
   { name: 'Brown', hex: '#6b3a2a' },
   { name: 'Navy', hex: '#1b2a4a' },
 ];
+const WILDCARD_BASE = [
+  { name: 'Teal', hex: '#009999' },
+  { name: 'Violet', hex: '#5C2D91' },
+  { name: 'Dark Forest Green', hex: '#1B5E20' },
+  { name: 'Deep Burgundy', hex: '#7B1E3A' },
+  { name: 'Terracotta', hex: '#C1622A' },
+  { name: 'Warm Golden Yellow', hex: '#D4A017' },
+  { name: 'True Pink', hex: '#FF4DA6' },
+];
 
 const MAIN_BANK = [
   // LIGHTS
@@ -314,19 +323,19 @@ function canSaveFavorite() {
 }
 
 function favBase() {
-  if (!currentBase) { alert('Roll a base color first.'); return; }
+  if (!currentBase) { alert('Cast a base color first.'); return; }
   openModal('base', `Base Color: ${currentBase.name}`,
     `<div class="swatch-row">${swatchHTML(currentBase)}</div>`);
 }
 
 function favPalette() {
-  if (!currentPalette) { alert('Roll a palette first.'); return; }
+  if (!currentPalette) { alert('Cast a palette first.'); return; }
   openModal('palette', 'Palette',
     `<div class="swatch-row">${currentPalette.map(swatchHTML).join('')}</div>`);
 }
 
 function favTechnique() {
-  if (!currentTechnique) { alert('Roll a technique first.'); return; }
+  if (!currentTechnique) { alert('Cast a technique first.'); return; }
   openModal('technique', `Technique: ${currentTechnique.name}`,
     `<div class="tech-card"><div class="tech-name">${currentTechnique.name}</div><div class="tech-desc">${currentTechnique.desc}</div></div>`);
 }
