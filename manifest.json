@@ -3,7 +3,7 @@
   "short_name": "PaletteCast",
   "description": "Acrylic pour painting color and technique randomizer",
  "start_url": "/palettecast/",
-  "scope": "/",
+  "scope": "/palettecast/",
   "display": "standalone",
   "orientation": "any",
   "background_color": "#0d0d0d",
