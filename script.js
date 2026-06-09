@@ -70,6 +70,9 @@ const MAIN_BANK = [
   { name: 'Silver metallic', hex: '#a8b0b8' },
   { name: 'Peach', hex: '#e8a878' },
 ];
+const LIGHT_COLORS = MAIN_BANK.filter(c => c.value === 'light');
+const MID_COLORS = MAIN_BANK.filter(c => c.value === 'mid');
+const DARK_COLORS = MAIN_BANK.filter(c => c.value === 'dark');
 
 const WILD_COLORS = [
   { name: 'Chartreuse', hex: '#7fff00', temp: 'cool' },
