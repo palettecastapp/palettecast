@@ -53,10 +53,7 @@ const MAIN_BANK = [
   { name: 'Jade', hex: '#2a8a5a', value: 'mid' },
   { name: 'Orchid', hex: '#b070b8', value: 'mid' },
   { name: 'Raspberry', hex: '#882060', value: 'mid' },
-  { name: 'Copper metallic', hex: '#b56a30', value: 'mid' },
   { name: 'Gold metallic', hex: '#c9a84c', value: 'mid' },
-  { name: 'Rose gold metallic', hex: '#c8847a', value: 'mid' },
-  { name: 'Antique gold', hex: '#b8962a', value: 'mid' },
   // DARKS
   { name: 'True red', hex: '#cc0000', value: 'dark' },
   { name: 'Burnt sienna', hex: '#a0522d', value: 'dark' },
@@ -70,8 +67,6 @@ const MAIN_BANK = [
   { name: 'Indigo', hex: '#2d1f8a', value: 'dark' },
   { name: 'Steel blue', hex: '#4a6880', value: 'dark' },
   { name: 'Fuchsia', hex: '#ff006e', value: 'dark' },
-  { name: 'Bronze metallic', hex: '#9a6b3a', value: 'dark' },
-  { name: 'Pewter metallic', hex: '#7a8890', value: 'dark' },
   { name: 'Silver metallic', hex: '#a8b0b8' },
   { name: 'Peach', hex: '#e8a878' },
 ];
@@ -94,32 +89,85 @@ const WILD_COLORS = [
   { name: 'Ultraviolet', hex: '#5f00ba', temp: 'cool' },
 ];
 
-const LIGHT_COLORS = MAIN_BANK.filter(c => c.value === 'light');
-const DARK_COLORS = MAIN_BANK.filter(c => c.value === 'dark');
-const MID_COLORS = MAIN_BANK.filter(c => c.value === 'mid');
+// ─── PRO COLORS (unlocked with Pro tier) ─────────────────────────────────────
+const PRO_COLORS = [
+  // Metallics
+  { name: 'Copper metallic', hex: '#b56a30', value: 'mid' },
+  { name: 'Rose gold metallic', hex: '#c8847a', value: 'mid' },
+  { name: 'Antique gold metallic', hex: '#b8962a', value: 'mid' },
+  { name: 'Bronze metallic', hex: '#9a6b3a', value: 'dark' },
+  { name: 'Pewter metallic', hex: '#7a8890', value: 'mid' },
+  { name: 'Iridescent silver', hex: '#c8d0d8', value: 'light' },
+  { name: 'Interference gold', hex: '#d4b84a', value: 'mid' },
+  // Pearls
+  { name: 'Pearl white', hex: '#f5f0e8', value: 'light' },
+  { name: 'Pearl yellow', hex: '#f0e060', value: 'light' },
+  { name: 'Pearl red', hex: '#d44060', value: 'mid' },
+  { name: 'Pearl blue', hex: '#4070d0', value: 'mid' },
+  { name: 'Pearl violet', hex: '#8050b0', value: 'mid' },
+  { name: 'Pearl green', hex: '#50a870', value: 'mid' },
+  // Color shift - cool
+  { name: 'Aqua shift', hex: '#00c8d0', value: 'mid' },
+  { name: 'Blue shift', hex: '#1e6fff', value: 'mid' },
+  { name: 'Blue violet shift', hex: '#5b4dff', value: 'mid' },
+  { name: 'Lime shift', hex: '#aaee00', value: 'light' },
+  { name: 'Turquoise iridescent', hex: '#40e0d0', value: 'mid' },
+  { name: 'Forest iridescent', hex: '#3a7d44', value: 'dark' },
+  { name: 'Ocean blue iridescent', hex: '#006994', value: 'dark' },
+  { name: 'Dragon shift', hex: '#60b800', value: 'mid' },
+  // Color shift - warm
+  { name: 'Pink shift', hex: '#ff69b4', value: 'mid' },
+  { name: 'Hot pink iridescent', hex: '#e8409a', value: 'mid' },
+  { name: 'Orchid shift', hex: '#da70d6', value: 'mid' },
+  { name: 'Purple shift', hex: '#9b30ff', value: 'mid' },
+  { name: 'Plum shift', hex: '#7b2d8b', value: 'dark' },
+  { name: 'Raspberry shift', hex: '#c71585', value: 'dark' },
+  { name: 'Red shift', hex: '#cc2200', value: 'dark' },
+  { name: 'Autumn red iridescent', hex: '#ff4500', value: 'mid' },
+  { name: 'Orange iridescent', hex: '#ff7900', value: 'mid' },
+  { name: 'Storm purple iridescent', hex: '#6a0dad', value: 'dark' },
+  { name: 'Yellow iridescent', hex: '#e8f5a0', value: 'light' },
+  // Special effects
+  { name: 'Black shift', hex: '#3a3a3a', value: 'dark' },
+  { name: 'Neon yellow glow', hex: '#cfff04', value: 'light' },
+  { name: 'Neon orange glow', hex: '#ff6200', value: 'mid' },
+  { name: 'Neon pink glow', hex: '#ff1dce', value: 'mid' },
+  { name: 'Phthalo blue deep', hex: '#000f5c', value: 'dark' },
+  { name: 'Phthalo green deep', hex: '#003320', value: 'dark' },
+  // Pigments
+  { name: 'Cobalt blue', hex: '#0047ab', value: 'dark' },
+  { name: 'Cobalt teal', hex: '#00827f', value: 'dark' },
+  { name: 'Quinacridone magenta', hex: '#c8126a', value: 'dark' },
+  { name: 'Quinacridone red', hex: '#9e1b1b', value: 'dark' },
+  { name: 'Dioxazine purple', hex: '#320850', value: 'dark' },
+  { name: 'Hansa yellow', hex: '#e8d44d', value: 'light' },
+  { name: 'Burnt sienna', hex: '#8b4513', value: 'dark' },
+  { name: 'Raw umber', hex: '#4a3728', value: 'dark' },
+];
 
 const TECHNIQUES = [
-  { name: 'Straight pour', youtube: '', desc: 'Paint colors are poured individually onto the surface in separate streams, allowing controlled placement and minimal blending.' },
-  { name: 'Dirty pour', youtube: '', desc: 'Multiple paint colors are combined in one container and poured together, producing spontaneous mixing and unpredictable patterns.' },
-  { name: 'Classic flip cup', youtube: '', desc: 'Colors carefully poured down the side of the cup to create tidy, distinct layers, then inverted onto the canvas and lifted to release stacked colors in one motion.' },
-  { name: 'Dirty flip cup', youtube: '', desc: 'Colors dropped into the cup without careful layering — plopped in rather than poured down the side — then flipped. Less defined bands, more spontaneous on release.' },
-  { name: 'Open top cup pour', youtube: '', desc: 'Colors loaded into an open cup placed on the canvas; paint leaks from underneath as the cup floats, and the lip creates a natural swipe effect.' },
-  { name: 'Ring pour / tree ring', youtube: '', desc: 'Paint is poured in concentric circles from a single point, producing layered rings and gradual color transitions.' },
-  { name: 'Traveling ring pour', youtube: '', desc: 'Colors carefully layered in the cup by pouring slowly down the side. Poured in small concentric circles while the cup moves along a path across the canvas, then tilted to stretch the rings.' },
-  { name: 'Kiss pour', youtube: '', desc: 'Two separately loaded cups poured together where they meet, colors kissing at the center.' },
-  { name: 'Puddle pour', youtube: '', desc: 'Individual colors poured in separate puddles across the canvas; colors expand and meet as they spread.' },
-  { name: 'Bloom pour', youtube: '', desc: 'Paint poured onto a stationary surface, then placed on a spinner and spun outward, creating a radial cell-and-lace pattern.' },
-  { name: 'Swipe', youtube: '', desc: 'Paint is dragged across the surface with a flat tool, exposing cells and blending underlying colors. Common tools include a palette knife, paper towel, stiff cardstock, or a flexible acrylic sheet.' },
-  { name: 'Dutch pour / air swipe', youtube: '', desc: 'Paint moved across the canvas using directed air — a hair dryer or straw — creating flowing, feathered patterns.' },
-  { name: 'String or chain pull', youtube: '', desc: 'Strings dipped in paint and arranged on the canvas, then pulled away to leave trailing, organic line patterns.' },
-  { name: 'Caterpillars', youtube: '', desc: 'Silicone dotted in a deliberate line with a toothpick, creating a trail of cells in a controlled path across the canvas.' },
-  { name: 'Strainer pour', youtube: '', desc: 'Paint poured through a strainer onto the canvas; the holes break up the flow into organic spotting.' },
-  { name: 'Funnel pour', youtube: '', desc: 'Paint directed through a funnel in a controlled stream, building layered rings or lines where it lands.' },
-  { name: 'Pour over', youtube: '', desc: 'Paint poured over an object with an interesting edge or shape — bottle bottoms, cookie cutters, scalloped forms — then the object is lifted to reveal the impression.' },
-  { name: 'Balloon smash', youtube: '', desc: 'A balloon dipped in paint and pressed onto the canvas, leaving a circular, cell-rich impression.' },
-  { name: 'Split cup pour', youtube: '', desc: 'A divided cup holds colors in separate sections; tilting releases them in distinct ribbons that meet on the canvas. Requires a divided pour cup, available online or at art supply stores.' },
-  { name: 'Dip', youtube: '', desc: 'The canvas is turned face-down and dipped directly into a puddle of colors arranged on the workspace, then lifted to reveal the transferred pattern.' },
-  { name: 'Reverse dip', youtube: '', desc: 'Colors are poured in a puddle on the canvas, then a sheet of saran wrap or paper towel is laid flat on top and pressed down. The sheet is lifted by all four corners, pulling the paint up and leaving an organic textured impression behind.' },
+  { name: 'Straight pour', youtube: 'https://youtube.com/shorts/-1bGpRJKdVA?feature=share', desc: 'Paint colors are poured individually onto the surface in separate streams, allowing controlled placement and minimal blending.' },
+  { name: 'Dirty pour', youtube: 'https://youtube.com/shorts/2ykUKo2N24E?feature=share', desc: 'Multiple paint colors are combined in one container and poured together, producing spontaneous mixing and unpredictable patterns.' },
+  { name: 'Classic flip cup', youtube: 'https://youtube.com/shorts/aV8OBcjhGbc?feature=share', desc: 'Colors carefully poured down the side of the cup to create tidy, distinct layers, then inverted onto the canvas and lifted to release stacked colors in one motion.' },
+  { name: 'Dirty flip cup', youtube: 'https://youtube.com/shorts/qEVJmhBChf8?feature=share', desc: 'Colors dropped into the cup without careful layering — plopped in rather than poured down the side — then flipped. Less defined bands, more spontaneous on release.' },
+  { name: 'Open top cup pour', youtube: 'https://youtube.com/shorts/X4fdg7iIqo4?feature=share', desc: 'Colors loaded into an open cup placed on the canvas; paint leaks from underneath as the cup floats, and the lip creates a natural swipe effect.' },
+  { name: 'Ring pour / tree ring', youtube: 'https://youtube.com/shorts/u3W3aAM1-aM?feature=share', desc: 'Paint is poured in concentric circles from a single point, producing layered rings and gradual color transitions.' },
+  { name: 'Traveling ring pour', youtube: 'https://youtube.com/shorts/CWpriFUOzX0?feature=share', desc: 'Colors carefully layered in the cup by pouring slowly down the side. Poured in small concentric circles while the cup moves along a path across the canvas, then tilted to stretch the rings.' },
+  { name: 'Kiss pour', youtube: 'https://youtube.com/shorts/jKQ9WrZGdWU?feature=share', desc: 'Two separately loaded cups poured together where they meet, colors kissing at the center.' },
+  { name: 'Puddle pour', youtube: 'https://youtube.com/shorts/QdNxIj9q6GU?feature=share', desc: 'Individual colors poured in separate puddles across the canvas; colors expand and meet as they spread.' },
+  { name: 'Bloom pour', youtube: 'https://youtu.be/a9C0psoUETA', desc: 'Paint poured onto a stationary surface, then placed on a spinner and spun outward, creating a radial cell-and-lace pattern.' },
+  { name: 'Card swipe', youtube: 'https://youtube.com/shorts/9mWUhcTSD1Y?feature=share', desc: 'A flat, rigid card — such as a piece of cardstock, a gift card, or an index card — is dragged across freshly poured paint in one smooth motion using very light pressure. The edge lifts and smears the top layer, exposing the colors underneath and creating feathered cells along the drag path.' },
+  { name: 'Knife swipe', youtube: 'https://youtube.com/shorts/jib2yUwsyGw?feature=share', desc: 'A palette knife is held at a low angle and lightly skimmed across the surface through wet paint. For a dramatic variation, a contrasting color thinned to a low viscosity can be loaded directly onto the knife and skimmed across the top, creating fine detail along the edges and striking cell formation where paint is lifted and folded.' },
+  { name: 'Dutch pour / air swipe', youtube: 'https://youtu.be/QSBIUg8S7Oo', desc: 'Paint moved across the canvas using directed air — a hair dryer or straw — creating flowing, feathered patterns.' },
+  { name: 'String or chain pull', youtube: 'https://youtube.com/shorts/dWhBeiSgsCw?feature=share', desc: 'Strings dipped in paint and arranged on the canvas, then pulled away to leave trailing, organic line patterns.' },
+  { name: 'Caterpillars / dotting', youtube: 'https://youtube.com/shorts/63BIaW5sOMo?feature=share', desc: 'Silicone dotted in a deliberate line with a toothpick, creating a trail of cells in a controlled path across the canvas.' },
+  { name: 'Strainer pour', youtube: 'https://youtu.be/gfF7wcsiM5U', desc: 'Paint poured through a strainer onto the canvas; the holes break up the flow into organic spotting.' },
+  { name: 'Funnel pour', youtube: 'https://youtube.com/shorts/rb-bMciCwgg?feature=share', desc: 'Paint directed through a funnel in a controlled stream, building layered rings or lines where it lands.' },
+  { name: 'Pour over', youtube: 'https://youtu.be/WyvJf3Gqq08', desc: 'Paint poured over an object with an interesting edge or shape — bottle bottoms, cookie cutters, scalloped forms — then the object is lifted to reveal the impression.' },
+  { name: 'Balloon smash', youtube: 'https://youtube.com/shorts/_30S7RgcW2c?feature=share', desc: 'A balloon dipped in paint and pressed onto the canvas, leaving a circular, cell-rich impression.' },
+  { name: 'Split cup pour', youtube: 'https://youtube.com/shorts/sjgPKVR4vQo?feature=share', desc: 'A divided cup holds colors in separate sections; tilting releases them in distinct ribbons that meet on the canvas. Requires a divided pour cup, available online or at art supply stores.' },
+  { name: 'Dip', youtube: 'https://youtube.com/shorts/BR-cnAJ92Iw?feature=share', desc: 'The canvas is turned face-down and dipped directly into a puddle of colors arranged on the workspace, then lifted to reveal the transferred pattern.' },
+  { name: 'Reverse dip', youtube: 'https://youtube.com/shorts/mchs7G0F5sg?feature=share', desc: 'Colors are poured in a puddle on the canvas, then a sheet of saran wrap or paper towel is laid flat on top and pressed down. The sheet is lifted by all four corners, pulling the paint up and leaving an organic textured impression behind.' },
 ];
 
 const FREE_LIMIT = 5;
@@ -286,7 +334,12 @@ function rollTechnique() {
   currentTechnique = pickRandom(pool, 1)[0];
   recentTechniques.push(currentTechnique.name);
   if (recentTechniques.length > 5) recentTechniques.shift();
-  savedTechHTML = `<div class="tech-card"><div class="tech-name">${currentTechnique.name}</div><div class="tech-desc">${currentTechnique.desc}</div></div>`;
+
+  const videoBtn = IS_PRO && currentTechnique.youtube
+    ? `<a href="${currentTechnique.youtube}" target="_blank" rel="noopener" style="display:inline-block;margin-top:12px;padding:8px 16px;background:linear-gradient(135deg,#c9a84c,#e8735a);border-radius:8px;font-size:14px;font-weight:700;color:#fff;text-decoration:none;">▶ Watch Video</a>`
+    : '';
+
+  savedTechHTML = `<div class="tech-card"><div class="tech-name">${currentTechnique.name}</div><div class="tech-desc">${currentTechnique.desc}</div>${videoBtn}</div>`;
   document.getElementById('tech-result').innerHTML = savedTechHTML;
   trackCast();
   trackCast();
@@ -319,6 +372,7 @@ function calcPaint() {
 // ─── FAVORITES ───────────────────────────────────────────────────────────────
 
 function canSaveFavorite() {
+  if (IS_PRO) return true;
   return favorites.length < FREE_LIMIT;
 }
 
@@ -371,7 +425,12 @@ function openModal(type, title, previewHTML) {
 
   const remaining = FREE_LIMIT - favorites.length;
   document.getElementById('modal-limit-note').textContent =
-    `${remaining} of ${FREE_LIMIT} free saves remaining`;
+    IS_PRO ? 'Pro — unlimited saves' : `${remaining} of ${FREE_LIMIT} free saves remaining`;
+
+  // Reset photo preview
+  const photoPreview = document.getElementById('modal-photo-preview');
+  if (photoPreview) { photoPreview.innerHTML = ''; photoPreview.dataset.photoData = ''; }
+
   document.getElementById('modal-overlay').classList.add('open');
 }
 
@@ -416,10 +475,11 @@ function removeCustomTag(i) {
 
 function saveFavorite() {
   if (!canSaveFavorite()) return;
-  const notes = document.getElementById('modal-notes').value.trim();
-  const allTags = [...selectedTags, ...customTags];
+  const notes = IS_PRO ? document.getElementById('modal-notes').value.trim() : '';
+  const allTags = IS_PRO ? [...selectedTags, ...customTags] : [];
+  const photoData = IS_PRO ? (document.getElementById('modal-photo-preview').dataset.photoData || '') : '';
 
-  let data = { type: modalType, tags: allTags, notes, date: new Date().toLocaleDateString() };
+  let data = { type: modalType, tags: allTags, notes, photo: photoData, date: new Date().toLocaleDateString() };
   if (modalType === 'base') data.color = currentBase;
   if (modalType === 'palette') data.colors = currentPalette;
   if (modalType === 'technique') data.technique = currentTechnique;
@@ -437,11 +497,58 @@ function deleteFavorite(i) {
 }
 
 function updateBanner() {
-  const remaining = FREE_LIMIT - favorites.length;
   const el = document.getElementById('banner-saves-text');
-  if (el) el.textContent = remaining > 0
-    ? `${favorites.length} of ${FREE_LIMIT} free saves used — upgrade for unlimited`
-    : `You've reached your ${FREE_LIMIT} save limit — upgrade to keep going`;
+  if (!el) return;
+  if (IS_PRO) {
+    el.textContent = 'PaletteCast Pro — unlimited saves unlocked ✓';
+  } else {
+    const remaining = FREE_LIMIT - favorites.length;
+    el.textContent = remaining > 0
+      ? `${favorites.length} of ${FREE_LIMIT} free saves used — upgrade for unlimited`
+      : `You've reached your ${FREE_LIMIT} save limit — upgrade to keep going`;
+  }
+}
+
+// Called by billing.js after a successful purchase to refresh the UI
+function updateUI() {
+  // Refresh modal pro section visibility if modal is open
+  const proSection = document.getElementById('modal-pro-section');
+  const freeNote = document.getElementById('modal-free-note');
+  if (proSection && freeNote) {
+    if (IS_PRO) {
+      proSection.style.display = 'block';
+      freeNote.style.display = 'none';
+    }
+  }
+  // Hide ads if Pro
+  if (IS_PRO) {
+    document.querySelectorAll('.ad-banner').forEach(el => el.style.display = 'none');
+  }
+  // Update banner and limit notes
+  updateBanner();
+  updateSaveCounter();
+  // Re-render favorites to show Pro features
+  renderFavorites();
+}
+
+function updateSaveCounter() {
+  const limitNote = document.getElementById('modal-limit-note');
+  if (limitNote) {
+    if (IS_PRO) {
+      limitNote.textContent = 'Pro — unlimited saves';
+    } else {
+      const remaining = FREE_LIMIT - favorites.length;
+      limitNote.textContent = `${remaining} of ${FREE_LIMIT} free saves remaining`;
+    }
+  }
+  const favLimitNote = document.getElementById('fav-limit-note');
+  if (favLimitNote) {
+    if (IS_PRO) {
+      favLimitNote.textContent = 'Pro — unlimited saves';
+    } else {
+      favLimitNote.textContent = `${favorites.length} of ${FREE_LIMIT} free saves used`;
+    }
+  }
 }
 
 function renderFavorites() {
@@ -479,6 +586,9 @@ function renderFavorites() {
     const notesHTML = f.notes
       ? `<div class="fav-notes">"${f.notes}"</div>` : '';
 
+    const photoHTML = f.photo
+      ? `<div style="margin-top:8px;"><img src="${f.photo}" style="max-width:100%;max-height:120px;border-radius:8px;" alt="Saved photo"></div>` : '';
+
     const typeLabel = f.type === 'base' ? 'Base Color' : f.type === 'palette' ? 'Palette' : 'Technique';
 
     return `<div class="fav-card">
@@ -492,6 +602,7 @@ function renderFavorites() {
       ${previewHTML}
       ${tagsHTML ? `<div class="fav-tags">${tagsHTML}</div>` : ''}
       ${notesHTML}
+      ${photoHTML}
     </div>`;
   }).join('');
 }
@@ -549,6 +660,33 @@ function closeUpgrade(e) {
 }
 function closeUpgradeDirect() {
   document.getElementById('upgrade-overlay').classList.remove('open');
+}
+
+function handlePhotoUpload(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const preview = document.getElementById('modal-photo-preview');
+    preview.dataset.photoData = e.target.result;
+    preview.innerHTML = `<img src="${e.target.result}" style="max-width:100%;max-height:120px;border-radius:8px;margin-top:8px;" alt="Upload preview">`;
+  };
+  // Compress before storing
+  const img = new Image();
+  img.onload = function() {
+    const canvas = document.createElement('canvas');
+    const maxW = 600;
+    const scale = Math.min(1, maxW / img.width);
+    canvas.width = img.width * scale;
+    canvas.height = img.height * scale;
+    canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+    const compressed = canvas.toDataURL('image/jpeg', 0.6);
+    const preview = document.getElementById('modal-photo-preview');
+    preview.dataset.photoData = compressed;
+    preview.innerHTML = `<img src="${compressed}" style="max-width:100%;max-height:120px;border-radius:8px;margin-top:8px;" alt="Upload preview">`;
+  };
+  reader.readAsDataURL(file);
+  reader.onload = e => { img.src = e.target.result; };
 }
 
 // Init
