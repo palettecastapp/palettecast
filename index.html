@@ -445,6 +445,11 @@ html, body {
       <p style="font-size:15px;line-height:1.6;color:#666;font-style:italic;">One thing to know: PaletteCast is made for pourers who already know their way around a cup and canvas. We're not covering the basics of viscosity, medium ratios, or materials here — that's a whole world of its own, and there are amazing creators out there who do it beautifully. We're just here to help inspire a little magic. .</p>
     </div>
     <div class="section">
+      <div style="font-size:13px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;">Community</div>
+      <p style="font-size:16px;line-height:1.6;color:#333;margin-bottom:12px;">Join the PaletteCast community on Facebook! Share your pours, swap tips, and connect with fellow pour painters.</p>
+      <a href="https://www.facebook.com/groups/palettecast" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;background:linear-gradient(135deg,#c9a84c,#e8735a);border-radius:10px;font-size:15px;font-weight:700;color:#fff;text-decoration:none;">Join the Facebook Group</a>
+    </div>
+    <div class="section">
       <div style="font-size:13px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;">Version</div>
       <div style="font-size:15px;color:#333;">PaletteCast 1.0</div>
       <div style="font-size:13px;color:#888;margin-top:4px;">© 2026 PaletteCast</div>
@@ -533,6 +538,13 @@ html, body {
         <button class="modal-add-tag" onclick="addCustomTag()">Add</button>
       </div>
       <div id="modal-custom-tags-display" class="fav-tags" style="margin-top:8px;"></div>
+
+      <div class="modal-label" style="margin-top:12px;">Photo</div>
+      <label style="display:block;padding:8px 12px;background:#f0f0f0;border-radius:8px;font-size:14px;color:#555;cursor:pointer;text-align:center;">
+        📷 Add a photo of your pour
+        <input type="file" accept="image/*" style="display:none;" onchange="handlePhotoUpload(this)">
+      </label>
+      <div id="modal-photo-preview"></div>
     </div>
 
     <div id="modal-free-note" style="font-size:15px;color:var(--text3);text-align:center;padding:8px 0;">
