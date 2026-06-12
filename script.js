@@ -118,6 +118,7 @@ const PRO_COLORS = [
   { name: 'Forest iridescent', hex: '#3a7d44', value: 'dark' },
   { name: 'Ocean blue iridescent', hex: '#006994', value: 'dark' },
   { name: 'Dragon shift', hex: '#60b800', value: 'mid' },
+  { name: 'Black shift', hex: '#3a3a3a', value: 'dark' },
   // Color shift - warm
   { name: 'Pink shift', hex: '#ff69b4', value: 'mid' },
   { name: 'Hot pink iridescent', hex: '#e8409a', value: 'mid' },
@@ -130,14 +131,13 @@ const PRO_COLORS = [
   { name: 'Orange iridescent', hex: '#ff7900', value: 'mid' },
   { name: 'Storm purple iridescent', hex: '#6a0dad', value: 'dark' },
   { name: 'Yellow iridescent', hex: '#e8f5a0', value: 'light' },
-  // Special effects
-  { name: 'Black shift', hex: '#3a3a3a', value: 'dark' },
+  // Neons
   { name: 'Neon yellow glow', hex: '#cfff04', value: 'light' },
   { name: 'Neon orange glow', hex: '#ff6200', value: 'mid' },
   { name: 'Neon pink glow', hex: '#ff1dce', value: 'mid' },
+  // Pigments
   { name: 'Phthalo blue deep', hex: '#000f5c', value: 'dark' },
   { name: 'Phthalo green deep', hex: '#003320', value: 'dark' },
-  // Pigments
   { name: 'Cobalt blue', hex: '#0047ab', value: 'dark' },
   { name: 'Cobalt teal', hex: '#00827f', value: 'dark' },
   { name: 'Quinacridone magenta', hex: '#c8126a', value: 'dark' },
