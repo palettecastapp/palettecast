@@ -20,7 +20,7 @@ const WILDCARD_BASE = [
 const MAIN_BANK = [
   // LIGHTS
   { name: 'Blush', hex: '#e8a8b0', value: 'light' },
-  { name: 'Peach', hex: '#e8a878', value: 'light' },
+  { name: 'Peach', hex: '#F2C2A8', value: 'light' },
   { name: 'Lavender', hex: '#d0b8e8', value: 'light' },
   { name: 'Mint', hex: '#98d8c0', value: 'light' },
   { name: 'Ice blue', hex: '#a8c8e0', value: 'light' },
@@ -39,7 +39,7 @@ const MAIN_BANK = [
   // MIDS
   { name: 'Coral', hex: '#ff6a30', value: 'mid' },
   { name: 'Salmon', hex: '#f08090', value: 'mid' },
-  { name: 'Terracotta', hex: '#c45a20', value: 'mid' },
+  { name: 'Clay', hex: '#D98E5C', value: 'mid' },
   { name: 'Ochre', hex: '#c8960c', value: 'mid' },
   { name: 'Olive', hex: '#6b7c2e', value: 'mid' },
   { name: 'Cerulean', hex: '#0088cc', value: 'mid' },
@@ -56,31 +56,28 @@ const MAIN_BANK = [
   { name: 'Gold metallic', hex: '#c9a84c', value: 'mid' },
   // DARKS
   { name: 'True red', hex: '#cc0000', value: 'dark' },
-  { name: 'Burnt sienna', hex: '#a0522d', value: 'dark' },
+  { name: 'Brick red', hex: '#C24A3D', value: 'dark' },
   { name: 'Chartreuse', hex: '#c8e000', value: 'dark' },
   { name: 'Forest green', hex: '#2d5a27', value: 'dark' },
   { name: 'Cobalt', hex: '#1a3a7a', value: 'dark' },
-  { name: 'Violet', hex: '#7c3d9e', value: 'dark' },
+  { name: 'Grape', hex: '#7c3d9e', value: 'dark' },
   { name: 'Purple', hex: '#5b2d8a', value: 'dark' },
   { name: 'Burgundy', hex: '#6b1820', value: 'dark' },
   { name: 'Chocolate', hex: '#5c3020', value: 'dark' },
   { name: 'Indigo', hex: '#2d1f8a', value: 'dark' },
   { name: 'Steel blue', hex: '#4a6880', value: 'dark' },
   { name: 'Fuchsia', hex: '#ff006e', value: 'dark' },
-  { name: 'Silver metallic', hex: '#a8b0b8' },
-  { name: 'Peach', hex: '#e8a878' },
 ];
 const LIGHT_COLORS = MAIN_BANK.filter(c => c.value === 'light');
 const MID_COLORS = MAIN_BANK.filter(c => c.value === 'mid');
 const DARK_COLORS = MAIN_BANK.filter(c => c.value === 'dark');
 
 const WILD_COLORS = [
-  { name: 'Chartreuse', hex: '#7fff00', temp: 'cool' },
   { name: 'Electric teal', hex: '#00e5cc', temp: 'cool' },
   { name: 'Hot magenta', hex: '#ff1493', temp: 'warm' },
   { name: 'Burnt orange', hex: '#cc4400', temp: 'warm' },
   { name: 'Acid yellow', hex: '#e8e800', temp: 'warm' },
-  { name: 'Raw umber', hex: '#826644', temp: 'warm' },
+  { name: 'Coffee', hex: '#826644', temp: 'warm' },
   { name: 'Neon coral', hex: '#ff6b6b', temp: 'warm' },
   { name: 'Shocking violet', hex: '#8b00ff', temp: 'cool' },
   { name: 'Slime green', hex: '#5cb800', temp: 'cool' },
@@ -269,43 +266,56 @@ function rollBase() {
 
 function getTemp(c) { return c.temp || c.value === 'light' ? (c.hex < '#888888' ? 'cool' : 'warm') : 'neutral'; }
 
-function buildContrastPalette(count, lockedColors) {
-  const unlocked = count - lockedColors.size;
+// excludeNames: Set of color names that must not appear in this roll
+// (locked colors + already-picked colors within the same roll)
+function buildContrastPalette(count, excludeNames) {
+  const unlocked = count - excludeNames.size;
   if (unlocked < 1) return null;
 
-  const guaranteed = [];
-  // Always include wild, light, dark
-  if (unlocked >= 1) guaranteed.push({...pickRandom(WILD_COLORS, 1)[0], _type: 'wild'});
-  if (unlocked >= 2) guaranteed.push({...pickRandom(LIGHT_COLORS, 1)[0], _type: 'light'});
-  if (unlocked >= 3) guaranteed.push({...pickRandom(DARK_COLORS, 1)[0], _type: 'dark'});
+  const used = new Set(excludeNames);
 
-  // Fill remaining slots — avoid same value AND same temperature as existing picks
-  const remaining = unlocked - guaranteed.length;
-  if (remaining > 0) {
-    const usedValues = guaranteed.map(c => c.value || 'mid');
-    const usedTemps = guaranteed.map(c => c.temp || 'neutral');
-    
-    // Shuffle main bank and pick fillers that contrast
-    const shuffled = [...MAIN_BANK].sort(() => Math.random() - 0.5);
-    const fillers = [];
-    for (const c of shuffled) {
-      if (fillers.length >= remaining) break;
-      const sameValue = usedValues.filter(v => v === (c.value || 'mid')).length >= 2;
-      const sameTemp = usedTemps.filter(t => t === (c.temp || 'neutral')).length >= 2;
-      if (!sameValue && !sameTemp) {
-        fillers.push(c);
-        usedValues.push(c.value || 'mid');
-        usedTemps.push(c.temp || 'neutral');
-      }
+  // Full roll pool: MAIN_BANK + WILD_COLORS for all users (Wild entries are
+  // regular palette colors — the Wild category only applies to base rolls).
+  // Pro users also get PRO_COLORS.
+  const fullPool = [
+    ...MAIN_BANK,
+    ...WILD_COLORS,
+    ...(typeof IS_PRO !== 'undefined' && IS_PRO ? PRO_COLORS : []),
+  ];
+
+  const usedValues = [];
+  const usedTemps  = [];
+  const picks = [];
+
+  // TODO: Array.sort with random comparator is technically biased (not a uniform
+  // shuffle) — replace with Fisher-Yates across all shuffle calls in a future pass.
+  const shuffled = [...fullPool].sort(() => Math.random() - 0.5);
+  for (const c of shuffled) {
+    if (picks.length >= unlocked) break;
+    if (used.has(c.name)) continue;
+    const sameValue = usedValues.filter(v => v === (c.value || 'mid')).length >= 2;
+    const sameTemp  = usedTemps.filter(t  => t === (c.temp  || 'neutral')).length >= 2;
+    if (!sameValue && !sameTemp) {
+      picks.push(c);
+      used.add(c.name);
+      usedValues.push(c.value || 'mid');
+      usedTemps.push(c.temp   || 'neutral');
     }
-    // If not enough contrast fillers found, fill remainder randomly
-    while (fillers.length < remaining) {
-      fillers.push(pickRandom(MAIN_BANK, 1)[0]);
-    }
-    guaranteed.push(...fillers);
   }
 
-  return guaranteed.sort(() => Math.random() - 0.5);
+  // Fallback: fill any remaining slots ignoring contrast constraints.
+  // Independent re-shuffle is intentional — avoids bias toward pool-start entries
+  // that the contrast loop already skipped.
+  const fallback = [...fullPool].sort(() => Math.random() - 0.5);
+  for (const c of fallback) {
+    if (picks.length >= unlocked) break;
+    if (!used.has(c.name)) {
+      picks.push(c);
+      used.add(c.name);
+    }
+  }
+
+  return picks.sort(() => Math.random() - 0.5);
 }
 
 function rollPalette() {
@@ -316,19 +326,27 @@ function rollPalette() {
   } else {
     const newPalette = [];
     const lockedSet = new Set([...lockedIndexes].filter(i => i < paletteCount));
+    // Build the set of names that must not appear in newly rolled slots:
+    // locked color names (Bug #4) seed the exclusion list for buildContrastPalette
+    const lockedNames = new Set(
+      [...lockedSet].map(i => currentPalette[i]?.name).filter(Boolean)
+    );
     const unlockedCount = paletteCount - lockedSet.size;
-    const newColors = buildContrastPalette(paletteCount, lockedSet) || pickRandom(MAIN_BANK, unlockedCount + 5);
+    const newColors = buildContrastPalette(paletteCount, lockedNames)
+      || pickRandom(MAIN_BANK.filter(c => !lockedNames.has(c.name)), unlockedCount + 5);
     let ni = 0;
     for (let i = 0; i < paletteCount; i++) {
       if (lockedSet.has(i) && currentPalette[i]) {
         newPalette[i] = currentPalette[i];
       } else {
-        newPalette[i] = newColors[ni++] || pickRandom(MAIN_BANK, 1)[0];
+        newPalette[i] = newColors[ni++]
+          || pickRandom(MAIN_BANK.filter(c => !lockedNames.has(c.name)), 1)[0];
       }
     }
     currentPalette = newPalette;
   }
   renderPalette();
+  trackCast();
 }
 
 function rollTechnique() {
@@ -344,7 +362,6 @@ function rollTechnique() {
 
   savedTechHTML = `<div class="tech-card"><div class="tech-name">${currentTechnique.name}</div><div class="tech-desc">${currentTechnique.desc}</div>${videoBtn}</div>`;
   document.getElementById('tech-result').innerHTML = savedTechHTML;
-  trackCast();
   trackCast();
 }
 
