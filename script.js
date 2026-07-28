@@ -9,81 +9,73 @@ const BASE_COLORS = [
 ];
 const WILDCARD_BASE = [
   { name: 'Teal', hex: '#009999' },
-  { name: 'Violet', hex: '#5C2D91' },
-  { name: 'Dark Forest Green', hex: '#1B5E20' },
-  { name: 'Deep Burgundy', hex: '#7B1E3A' },
-  { name: 'Terracotta', hex: '#C1622A' },
-  { name: 'Warm Golden Yellow', hex: '#D4A017' },
-  { name: 'True Pink', hex: '#FF4DA6' },
+  { name: 'Burgundy', hex: '#7B1E3A' },
+  { name: 'True Pink', hex: '#ff85c8' },
 ];
 
 const MAIN_BANK = [
   // LIGHTS
   { name: 'Blush', hex: '#e8a8b0', value: 'light' },
-  { name: 'Peach', hex: '#F2C2A8', value: 'light' },
+  { name: 'Peach', hex: '#ffddb8', value: 'light' },
   { name: 'Lavender', hex: '#d0b8e8', value: 'light' },
   { name: 'Mint', hex: '#98d8c0', value: 'light' },
   { name: 'Ice blue', hex: '#a8c8e0', value: 'light' },
   { name: 'Butter', hex: '#f0e090', value: 'light' },
   { name: 'Ivory', hex: '#f0e8d0', value: 'light' },
-  { name: 'Lemon', hex: '#f5e000', value: 'light' },
+  { name: 'Canary', hex: '#FFF680', value: 'light' },
+  { name: 'Yellow', hex: '#FFED00', value: 'light' },
   { name: 'Dusty rose', hex: '#c08090', value: 'light' },
   { name: 'Sage', hex: '#7d9b76', value: 'light' },
-  { name: 'Celadon', hex: '#9ac0a8', value: 'light' },
-  { name: 'Lilac', hex: '#9b72c8', value: 'light' },
-  { name: 'Silver metallic', hex: '#a8b0b8', value: 'light' },
+  { name: 'Lilac', hex: '#b06ee8', value: 'light' },
   { name: 'Champagne metallic', hex: '#d8c898', value: 'light' },
-  { name: 'Snow white', hex: '#f8f8f8', value: 'light' },
   { name: 'Pale blush', hex: '#fde8e4', value: 'light' },
-  { name: 'Frost', hex: '#e8f0f8', value: 'light' },
   // MIDS
-  { name: 'Coral', hex: '#ff6a30', value: 'mid' },
   { name: 'Salmon', hex: '#f08090', value: 'mid' },
+  { name: 'Terracotta', hex: '#d4785a', value: 'mid' },
   { name: 'Clay', hex: '#D98E5C', value: 'mid' },
   { name: 'Ochre', hex: '#c8960c', value: 'mid' },
+  { name: 'Amber', hex: '#FFB300', value: 'mid' },
+  { name: 'Orange', hex: '#FF8200', value: 'mid' },
+  { name: 'Vermillion', hex: '#f4320c', value: 'mid' },
   { name: 'Olive', hex: '#6b7c2e', value: 'mid' },
   { name: 'Cerulean', hex: '#0088cc', value: 'mid' },
   { name: 'Periwinkle', hex: '#8b9dc8', value: 'mid' },
   { name: 'Magenta', hex: '#d01070', value: 'mid' },
-  { name: 'Tan', hex: '#c8a878', value: 'mid' },
-  { name: 'Aqua', hex: '#3ab8c0', value: 'mid' },
+  { name: 'Sand', hex: '#e0c9a8', value: 'mid' },
+  { name: 'Aqua', hex: '#00c8c8', value: 'mid' },
   { name: 'Kelly green', hex: '#4cbb17', value: 'mid' },
-  { name: 'Royal blue', hex: '#2052c8', value: 'mid' },
-  { name: 'Turquoise', hex: '#00d4a0', value: 'mid' },
-  { name: 'Jade', hex: '#2a8a5a', value: 'mid' },
-  { name: 'Orchid', hex: '#b070b8', value: 'mid' },
-  { name: 'Raspberry', hex: '#882060', value: 'mid' },
+  { name: 'Turquoise', hex: '#40E0D0', value: 'mid' },
+  { name: 'Emerald', hex: '#2a8a5a', value: 'mid' },
+  { name: 'Orchid', hex: '#d040c0', value: 'mid' },
   { name: 'Gold metallic', hex: '#c9a84c', value: 'mid' },
   // DARKS
   { name: 'True red', hex: '#cc0000', value: 'dark' },
-  { name: 'Brick red', hex: '#C24A3D', value: 'dark' },
+  { name: 'Red', hex: '#ed1c24', value: 'dark' },
+  { name: 'Brick red', hex: '#c03428', value: 'dark' },
+  { name: 'Raspberry', hex: '#b01858', value: 'dark' },
   { name: 'Chartreuse', hex: '#c8e000', value: 'dark' },
   { name: 'Forest green', hex: '#2d5a27', value: 'dark' },
-  { name: 'Cobalt', hex: '#1a3a7a', value: 'dark' },
-  { name: 'Grape', hex: '#7c3d9e', value: 'dark' },
-  { name: 'Purple', hex: '#5b2d8a', value: 'dark' },
-  { name: 'Burgundy', hex: '#6b1820', value: 'dark' },
+  { name: 'Cobalt', hex: '#2052c8', value: 'dark' },
+  { name: 'Violet', hex: '#7c3d9e', value: 'dark' },
+  { name: 'Purple', hex: '#7b3fbf', value: 'dark' },
   { name: 'Chocolate', hex: '#5c3020', value: 'dark' },
   { name: 'Indigo', hex: '#2d1f8a', value: 'dark' },
   { name: 'Steel blue', hex: '#4a6880', value: 'dark' },
-  { name: 'Fuchsia', hex: '#ff006e', value: 'dark' },
+  { name: 'Fuchsia', hex: '#ff00ff', value: 'dark' },
+  { name: 'Payne\'s grey', hex: '#536878', value: 'dark' },
 ];
 const LIGHT_COLORS = MAIN_BANK.filter(c => c.value === 'light');
 const MID_COLORS = MAIN_BANK.filter(c => c.value === 'mid');
 const DARK_COLORS = MAIN_BANK.filter(c => c.value === 'dark');
 
 const WILD_COLORS = [
-  { name: 'Electric teal', hex: '#00e5cc', temp: 'cool' },
-  { name: 'Hot magenta', hex: '#ff1493', temp: 'warm' },
-  { name: 'Burnt orange', hex: '#cc4400', temp: 'warm' },
-  { name: 'Acid yellow', hex: '#e8e800', temp: 'warm' },
+  { name: 'Cyan', hex: '#00ffff', temp: 'cool' },
+  { name: 'Hot pink', hex: '#ff1493', temp: 'warm' },
   { name: 'Coffee', hex: '#826644', temp: 'warm' },
-  { name: 'Neon coral', hex: '#ff6b6b', temp: 'warm' },
-  { name: 'Shocking violet', hex: '#8b00ff', temp: 'cool' },
-  { name: 'Slime green', hex: '#5cb800', temp: 'cool' },
-  { name: 'Deep saffron', hex: '#ff9900', temp: 'warm' },
+  { name: 'Coral', hex: '#ff6b6b', temp: 'warm' },
+  { name: 'Bright violet', hex: '#8b00ff', temp: 'cool' },
   { name: 'Electric blue', hex: '#0066ff', temp: 'cool' },
-  { name: 'Rust orange', hex: '#c84b00', temp: 'warm' },
+  { name: 'Neon yellow', hex: '#FFFF00', temp: 'warm' },
   { name: 'Toxic lime', hex: '#ccff00', temp: 'cool' },
   { name: 'Crimson flash', hex: '#dc143c', temp: 'warm' },
   { name: 'Ultraviolet', hex: '#5f00ba', temp: 'cool' },
@@ -92,57 +84,32 @@ const WILD_COLORS = [
 // ─── PRO COLORS (unlocked with Pro tier) ─────────────────────────────────────
 const PRO_COLORS = [
   // Metallics
-  { name: 'Copper metallic', hex: '#b56a30', value: 'mid' },
-  { name: 'Rose gold metallic', hex: '#c8847a', value: 'mid' },
-  { name: 'Antique gold metallic', hex: '#b8962a', value: 'mid' },
-  { name: 'Bronze metallic', hex: '#9a6b3a', value: 'dark' },
-  { name: 'Pewter metallic', hex: '#7a8890', value: 'mid' },
-  { name: 'Iridescent silver', hex: '#c8d0d8', value: 'light' },
-  { name: 'Interference gold', hex: '#d4b84a', value: 'mid' },
+  { name: 'Copper', hex: '#b56a30', value: 'mid', tier: 'pro' },
+  { name: 'Rose gold', hex: '#c8847a', value: 'mid', tier: 'pro' },
+  { name: 'Antique gold', hex: '#b8962a', value: 'mid', tier: 'pro' },
+  { name: 'Bronze', hex: '#9a6b3a', value: 'dark', tier: 'pro' },
+  { name: 'Pewter', hex: '#7a8890', value: 'mid', tier: 'pro' },
+  { name: 'Interference gold', hex: '#d4b84a', value: 'mid', tier: 'pro' },
   // Pearls
-  { name: 'Pearl white', hex: '#f5f0e8', value: 'light' },
-  { name: 'Pearl yellow', hex: '#f0e060', value: 'light' },
-  { name: 'Pearl red', hex: '#d44060', value: 'mid' },
-  { name: 'Pearl blue', hex: '#4070d0', value: 'mid' },
-  { name: 'Pearl violet', hex: '#8050b0', value: 'mid' },
-  { name: 'Pearl green', hex: '#50a870', value: 'mid' },
-  // Color shift - cool
-  { name: 'Aqua shift', hex: '#00c8d0', value: 'mid' },
-  { name: 'Blue shift', hex: '#1e6fff', value: 'mid' },
-  { name: 'Blue violet shift', hex: '#5b4dff', value: 'mid' },
-  { name: 'Lime shift', hex: '#aaee00', value: 'light' },
-  { name: 'Turquoise iridescent', hex: '#40e0d0', value: 'mid' },
-  { name: 'Forest iridescent', hex: '#3a7d44', value: 'dark' },
-  { name: 'Ocean blue iridescent', hex: '#006994', value: 'dark' },
-  { name: 'Dragon shift', hex: '#60b800', value: 'mid' },
-  { name: 'Black shift', hex: '#3a3a3a', value: 'dark' },
-  // Color shift - warm
-  { name: 'Pink shift', hex: '#ff69b4', value: 'mid' },
-  { name: 'Hot pink iridescent', hex: '#e8409a', value: 'mid' },
-  { name: 'Orchid shift', hex: '#da70d6', value: 'mid' },
-  { name: 'Purple shift', hex: '#9b30ff', value: 'mid' },
-  { name: 'Plum shift', hex: '#7b2d8b', value: 'dark' },
-  { name: 'Raspberry shift', hex: '#c71585', value: 'dark' },
-  { name: 'Red shift', hex: '#cc2200', value: 'dark' },
-  { name: 'Autumn red iridescent', hex: '#ff4500', value: 'mid' },
-  { name: 'Orange iridescent', hex: '#ff7900', value: 'mid' },
-  { name: 'Storm purple iridescent', hex: '#6a0dad', value: 'dark' },
-  { name: 'Yellow iridescent', hex: '#e8f5a0', value: 'light' },
+  { name: 'Pearlescent', hex: '#f5f0e8', value: 'light', tier: 'pro' },
+  { name: 'Pearl yellow', hex: '#f5e87a', value: 'light', tier: 'pro' },
+  { name: 'Pearl red', hex: '#e85070', value: 'mid', tier: 'pro' },
+  { name: 'Pearl blue', hex: '#5090d8', value: 'mid', tier: 'pro' },
+  { name: 'Pearl violet', hex: '#9060c0', value: 'mid', tier: 'pro' },
+  { name: 'Pearl green', hex: '#60b870', value: 'mid', tier: 'pro' },
   // Neons
-  { name: 'Neon yellow glow', hex: '#cfff04', value: 'light' },
-  { name: 'Neon orange glow', hex: '#ff6200', value: 'mid' },
-  { name: 'Neon pink glow', hex: '#ff1dce', value: 'mid' },
-  // Pigments
-  { name: 'Phthalo blue deep', hex: '#000f5c', value: 'dark' },
-  { name: 'Phthalo green deep', hex: '#003320', value: 'dark' },
-  { name: 'Cobalt blue', hex: '#0047ab', value: 'dark' },
-  { name: 'Cobalt teal', hex: '#00827f', value: 'dark' },
-  { name: 'Quinacridone magenta', hex: '#c8126a', value: 'dark' },
-  { name: 'Quinacridone red', hex: '#9e1b1b', value: 'dark' },
-  { name: 'Dioxazine purple', hex: '#320850', value: 'dark' },
-  { name: 'Hansa yellow', hex: '#e8d44d', value: 'light' },
-  { name: 'Burnt sienna', hex: '#8b4513', value: 'dark' },
-  { name: 'Raw umber', hex: '#4a3728', value: 'dark' },
+  { name: 'Neon orange', hex: '#ffab4d', value: 'mid', tier: 'pro' },
+  { name: 'Neon pink', hex: '#ff1dce', value: 'mid', tier: 'pro' },
+  { name: 'Neon lime', hex: '#ccff00', value: 'light', tier: 'pro' },
+  // Color shifts (hex = primary color, hex2 = shift color)
+  { name: 'Color shift green', hex: '#4cbb17', hex2: '#c9a84c', value: 'mid', type: 'shift', tier: 'pro' },
+  { name: 'Color shift aqua', hex: '#40E0D0', hex2: '#0066ff', value: 'mid', type: 'shift', tier: 'pro' },
+  { name: 'Color shift blue', hex: '#0066ff', hex2: '#7c3d9e', value: 'mid', type: 'shift', tier: 'pro' },
+  { name: 'Color shift blue violet', hex: '#6040c0', hex2: '#d01070', value: 'dark', type: 'shift', tier: 'pro' },
+  { name: 'Color shift purple', hex: '#7c3d9e', hex2: '#0066ff', value: 'dark', type: 'shift', tier: 'pro' },
+  { name: 'Color shift pink', hex: '#ff85c8', hex2: '#c9a84c', value: 'mid', type: 'shift', tier: 'pro' },
+  { name: 'Color shift yellow', hex: '#FFED00', hex2: '#4cbb17', value: 'light', type: 'shift', tier: 'pro' },
+  { name: 'Color shift black', hex: '#1a1a1a', hex2: '#7c3d9e', value: 'dark', type: 'shift', tier: 'pro' },
 ];
 
 const TECHNIQUES = [
@@ -229,9 +196,24 @@ function pickRandom(arr, n) {
 
 let lockedIndexes = new Set();
 
+// Returns inline style for the swatch circle/pill based on color properties:
+// - shift colors render as horizontal gradient pills
+// - pro colors get a gold border
+// - free colors get the default border from CSS
+function swatchCircleStyle(c, extra) {
+  const isShift = c.type === 'shift';
+  const isPro   = c.tier === 'pro';
+  const bg      = isShift
+    ? `linear-gradient(to right, ${c.hex}, ${c.hex2})`
+    : c.hex;
+  const border  = isPro ? '2px solid #c9a84c' : '1px solid var(--border)';
+  const radius  = isShift ? '16px' : '50%';
+  return `background:${bg};border:${border};border-radius:${radius};${extra || ''}`;
+}
+
 function swatchHTML(c) {
   return `<div class="swatch">
-    <div class="swatch-circle" style="background:${c.hex};"></div>
+    <div class="swatch-circle" style="${swatchCircleStyle(c)}"></div>
     <span class="swatch-name">${c.name}</span>
   </div>`;
 }
@@ -239,7 +221,7 @@ function swatchHTML(c) {
 function palSwatchHTML(c, i) {
   const locked = lockedIndexes.has(i);
   return `<div class="swatch" onclick="toggleLock(${i})" style="cursor:pointer;position:relative;">
-    <div class="swatch-circle" style="background:${c.hex};${locked ? 'outline:2px solid #c9a84c;outline-offset:2px;' : ''}"></div>
+    <div class="swatch-circle" style="${swatchCircleStyle(c, locked ? 'outline:2px solid #c9a84c;outline-offset:2px;' : '')}"></div>
     <span class="swatch-name" style="${locked ? 'color:#c9a84c;' : ''}">${c.name}</span>
     ${locked ? '<span style="position:absolute;top:-4px;right:-4px;font-size:14px;">🔒</span>' : ''}
   </div>`;
@@ -320,27 +302,38 @@ function buildContrastPalette(count, excludeNames) {
 
 function rollPalette() {
   if (!currentPalette || currentPalette.length !== paletteCount) {
-    const palette = buildContrastPalette(paletteCount, new Set());
-    currentPalette = palette || pickRandom(MAIN_BANK, paletteCount);
+    const baseExclude = new Set(currentBase ? [currentBase.name] : []);
+    const palette = buildContrastPalette(paletteCount, baseExclude);
+    currentPalette = palette || pickRandom(MAIN_BANK.filter(c => !baseExclude.has(c.name)), paletteCount);
     lockedIndexes.clear();
   } else {
     const newPalette = [];
     const lockedSet = new Set([...lockedIndexes].filter(i => i < paletteCount));
-    // Build the set of names that must not appear in newly rolled slots:
-    // locked color names (Bug #4) seed the exclusion list for buildContrastPalette
+    // Exclude locked color names and the current base color from the roll pool
     const lockedNames = new Set(
       [...lockedSet].map(i => currentPalette[i]?.name).filter(Boolean)
     );
-    const unlockedCount = paletteCount - lockedSet.size;
-    const newColors = buildContrastPalette(paletteCount, lockedNames)
-      || pickRandom(MAIN_BANK.filter(c => !lockedNames.has(c.name)), unlockedCount + 5);
+    if (currentBase) lockedNames.add(currentBase.name);
+    const newColors = buildContrastPalette(paletteCount, lockedNames) || [];
+    // pickedNames tracks every name used in this roll (locked + newly assigned)
+    // so the per-slot fallback never repeats a color already in the palette
+    const pickedNames = new Set(lockedNames);
     let ni = 0;
     for (let i = 0; i < paletteCount; i++) {
       if (lockedSet.has(i) && currentPalette[i]) {
         newPalette[i] = currentPalette[i];
       } else {
-        newPalette[i] = newColors[ni++]
-          || pickRandom(MAIN_BANK.filter(c => !lockedNames.has(c.name)), 1)[0];
+        let color = newColors[ni++];
+        if (!color) {
+          const fallbackPool = [
+            ...MAIN_BANK,
+            ...WILD_COLORS,
+            ...(typeof IS_PRO !== 'undefined' && IS_PRO ? PRO_COLORS : []),
+          ].filter(c => !pickedNames.has(c.name));
+          color = pickRandom(fallbackPool, 1)[0];
+        }
+        if (color) pickedNames.add(color.name);
+        newPalette[i] = color;
       }
     }
     currentPalette = newPalette;
