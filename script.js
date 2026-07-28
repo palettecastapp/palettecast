@@ -21,18 +21,17 @@ const MAIN_BANK = [
   { name: 'Mint', hex: '#98d8c0', value: 'light' },
   { name: 'Ice blue', hex: '#a8c8e0', value: 'light' },
   { name: 'Butter', hex: '#f0e090', value: 'light' },
-  { name: 'Ivory', hex: '#f0e8d0', value: 'light' },
+  { name: 'Ivory', hex: '#f8f2c8', value: 'light' },
   { name: 'Canary', hex: '#FFF680', value: 'light' },
   { name: 'Yellow', hex: '#FFED00', value: 'light' },
   { name: 'Dusty rose', hex: '#c08090', value: 'light' },
   { name: 'Sage', hex: '#7d9b76', value: 'light' },
   { name: 'Lilac', hex: '#b06ee8', value: 'light' },
-  { name: 'Champagne metallic', hex: '#d8c898', value: 'light' },
+  { name: 'Champagne metallic', hex: '#d8c898', value: 'light', type: 'metallic' },
   { name: 'Pale blush', hex: '#fde8e4', value: 'light' },
   // MIDS
   { name: 'Salmon', hex: '#f08090', value: 'mid' },
   { name: 'Terracotta', hex: '#d4785a', value: 'mid' },
-  { name: 'Clay', hex: '#D98E5C', value: 'mid' },
   { name: 'Ochre', hex: '#c8960c', value: 'mid' },
   { name: 'Amber', hex: '#FFB300', value: 'mid' },
   { name: 'Orange', hex: '#FF8200', value: 'mid' },
@@ -47,10 +46,10 @@ const MAIN_BANK = [
   { name: 'Turquoise', hex: '#40E0D0', value: 'mid' },
   { name: 'Emerald', hex: '#2a8a5a', value: 'mid' },
   { name: 'Orchid', hex: '#d040c0', value: 'mid' },
-  { name: 'Gold metallic', hex: '#c9a84c', value: 'mid' },
+  { name: 'Gold metallic', hex: '#c9a84c', value: 'mid', type: 'metallic' },
   // DARKS
   { name: 'True red', hex: '#cc0000', value: 'dark' },
-  { name: 'Red', hex: '#ed1c24', value: 'dark' },
+  { name: 'Scarlet', hex: '#ed1c24', value: 'dark' },
   { name: 'Brick red', hex: '#c03428', value: 'dark' },
   { name: 'Raspberry', hex: '#b01858', value: 'dark' },
   { name: 'Chartreuse', hex: '#c8e000', value: 'dark' },
@@ -60,7 +59,7 @@ const MAIN_BANK = [
   { name: 'Purple', hex: '#7b3fbf', value: 'dark' },
   { name: 'Chocolate', hex: '#5c3020', value: 'dark' },
   { name: 'Indigo', hex: '#2d1f8a', value: 'dark' },
-  { name: 'Steel blue', hex: '#4a6880', value: 'dark' },
+  { name: 'Steel blue', hex: '#3a5c95', value: 'dark' },
   { name: 'Fuchsia', hex: '#ff00ff', value: 'dark' },
   { name: 'Payne\'s grey', hex: '#536878', value: 'dark' },
 ];
@@ -69,7 +68,6 @@ const MID_COLORS = MAIN_BANK.filter(c => c.value === 'mid');
 const DARK_COLORS = MAIN_BANK.filter(c => c.value === 'dark');
 
 const WILD_COLORS = [
-  { name: 'Cyan', hex: '#00ffff', temp: 'cool' },
   { name: 'Hot pink', hex: '#ff1493', temp: 'warm' },
   { name: 'Coffee', hex: '#826644', temp: 'warm' },
   { name: 'Coral', hex: '#ff6b6b', temp: 'warm' },
@@ -84,23 +82,23 @@ const WILD_COLORS = [
 // ─── PRO COLORS (unlocked with Pro tier) ─────────────────────────────────────
 const PRO_COLORS = [
   // Metallics
-  { name: 'Copper', hex: '#b56a30', value: 'mid', tier: 'pro' },
-  { name: 'Rose gold', hex: '#c8847a', value: 'mid', tier: 'pro' },
-  { name: 'Antique gold', hex: '#b8962a', value: 'mid', tier: 'pro' },
-  { name: 'Bronze', hex: '#9a6b3a', value: 'dark', tier: 'pro' },
-  { name: 'Pewter', hex: '#7a8890', value: 'mid', tier: 'pro' },
-  { name: 'Interference gold', hex: '#d4b84a', value: 'mid', tier: 'pro' },
+  { name: 'Copper', hex: '#b56a30', value: 'mid', type: 'metallic', tier: 'pro' },
+  { name: 'Rose gold', hex: '#c8847a', value: 'mid', type: 'metallic', tier: 'pro' },
+  { name: 'Antique gold', hex: '#b8962a', value: 'mid', type: 'metallic', tier: 'pro' },
+  { name: 'Bronze', hex: '#9a6b3a', value: 'dark', type: 'metallic', tier: 'pro' },
+  { name: 'Pewter', hex: '#7a8890', value: 'mid', type: 'metallic', tier: 'pro' },
+  { name: 'Interference gold', hex: '#d4b84a', value: 'mid', type: 'metallic-pearl', tier: 'pro' },
   // Pearls
-  { name: 'Pearlescent', hex: '#f5f0e8', value: 'light', tier: 'pro' },
-  { name: 'Pearl yellow', hex: '#f5e87a', value: 'light', tier: 'pro' },
-  { name: 'Pearl red', hex: '#e85070', value: 'mid', tier: 'pro' },
-  { name: 'Pearl blue', hex: '#5090d8', value: 'mid', tier: 'pro' },
-  { name: 'Pearl violet', hex: '#9060c0', value: 'mid', tier: 'pro' },
-  { name: 'Pearl green', hex: '#60b870', value: 'mid', tier: 'pro' },
+  { name: 'Pearlescent', hex: '#f5f0e8', value: 'light', type: 'pearl', tier: 'pro' },
+  { name: 'Pearl yellow', hex: '#f5e87a', value: 'light', type: 'pearl', tier: 'pro' },
+  { name: 'Pearl red', hex: '#e85070', value: 'mid', type: 'pearl', tier: 'pro' },
+  { name: 'Pearl blue', hex: '#5090d8', value: 'mid', type: 'pearl', tier: 'pro' },
+  { name: 'Pearl violet', hex: '#9060c0', value: 'mid', type: 'pearl', tier: 'pro' },
+  { name: 'Pearl green', hex: '#60b870', value: 'mid', type: 'pearl', tier: 'pro' },
   // Neons
+  { name: 'Neon blue', hex: '#00ffff', value: 'mid', tier: 'pro' },
   { name: 'Neon orange', hex: '#ffab4d', value: 'mid', tier: 'pro' },
   { name: 'Neon pink', hex: '#ff1dce', value: 'mid', tier: 'pro' },
-  { name: 'Neon lime', hex: '#ccff00', value: 'light', tier: 'pro' },
   // Color shifts (hex = primary color, hex2 = shift color)
   { name: 'Color shift green', hex: '#4cbb17', hex2: '#c9a84c', value: 'mid', type: 'shift', tier: 'pro' },
   { name: 'Color shift aqua', hex: '#40E0D0', hex2: '#0066ff', value: 'mid', type: 'shift', tier: 'pro' },
@@ -111,6 +109,25 @@ const PRO_COLORS = [
   { name: 'Color shift yellow', hex: '#FFED00', hex2: '#4cbb17', value: 'light', type: 'shift', tier: 'pro' },
   { name: 'Color shift black', hex: '#1a1a1a', hex2: '#7c3d9e', value: 'dark', type: 'shift', tier: 'pro' },
 ];
+
+// Groups of colors that must never co-occur in the same palette roll.
+// When any member is picked, all other members of its group are added to `used`.
+const EXCLUSION_GROUPS = [
+  ['Yellow', 'Neon yellow'],
+  ['Peach', 'Amber'],
+  ['Sage', 'Olive'],
+  ['Hot pink', 'Magenta', 'Fuchsia', 'Orchid'],
+  ['Violet', 'Bright violet', 'Ultraviolet'],
+  ['Ivory', 'Pearlescent', 'Pale blush'],
+  ['Gold metallic', 'Antique gold', 'Interference gold', 'Rose gold', 'Champagne metallic'],
+  ['Pearl blue', 'Cerulean'],
+  ['Electric blue', 'Cobalt'],
+];
+
+// Base colors that exclude specific palette colors from the roll when active.
+const BASE_ADJACENT = {
+  'Brown': ['Chocolate'],
+};
 
 const TECHNIQUES = [
   { name: 'Straight pour', youtube: 'https://youtube.com/shorts/-1bGpRJKdVA?feature=share', desc: 'Paint colors are poured individually onto the surface in separate streams, allowing controlled placement and minimal blending.' },
@@ -201,13 +218,30 @@ let lockedIndexes = new Set();
 // - pro colors get a gold border
 // - free colors get the default border from CSS
 function swatchCircleStyle(c, extra) {
-  const isShift = c.type === 'shift';
-  const isPro   = c.tier === 'pro';
-  const bg      = isShift
-    ? `linear-gradient(to right, ${c.hex}, ${c.hex2})`
-    : c.hex;
-  const border  = isPro ? '2px solid #c9a84c' : '1px solid var(--border)';
-  const radius  = isShift ? '16px' : '50%';
+  const isShift    = c.type === 'shift';
+  const isMetallic = c.type === 'metallic' || c.type === 'metallic-pearl';
+  const isPearl    = c.type === 'pearl'    || c.type === 'metallic-pearl';
+  const isPro      = c.tier === 'pro';
+
+  let bg;
+  if (isShift) {
+    bg = `linear-gradient(to right, ${c.hex}, ${c.hex2})`;
+  } else if (isMetallic && isPearl) {
+    bg = `radial-gradient(circle at 32% 28%, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.5) 15%, transparent 45%),`
+       + `repeating-linear-gradient(135deg, rgba(255,255,255,0.4) 0 3px, transparent 3px 8px),`
+       + c.hex;
+  } else if (isMetallic) {
+    bg = `repeating-linear-gradient(135deg, rgba(255,255,255,0.4) 0 3px, transparent 3px 8px),`
+       + c.hex;
+  } else if (isPearl) {
+    bg = `radial-gradient(circle at 32% 28%, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.5) 15%, transparent 45%),`
+       + c.hex;
+  } else {
+    bg = c.hex;
+  }
+
+  const border = isPro ? '2px solid #c9a84c' : '1px solid var(--border)';
+  const radius = isShift ? '16px' : '50%';
   return `background:${bg};border:${border};border-radius:${radius};${extra || ''}`;
 }
 
@@ -269,6 +303,14 @@ function buildContrastPalette(count, excludeNames) {
   const usedTemps  = [];
   const picks = [];
 
+  function blockGroup(name) {
+    for (const group of EXCLUSION_GROUPS) {
+      if (group.includes(name)) {
+        for (const other of group) used.add(other);
+      }
+    }
+  }
+
   // TODO: Array.sort with random comparator is technically biased (not a uniform
   // shuffle) — replace with Fisher-Yates across all shuffle calls in a future pass.
   const shuffled = [...fullPool].sort(() => Math.random() - 0.5);
@@ -280,6 +322,7 @@ function buildContrastPalette(count, excludeNames) {
     if (!sameValue && !sameTemp) {
       picks.push(c);
       used.add(c.name);
+      blockGroup(c.name);
       usedValues.push(c.value || 'mid');
       usedTemps.push(c.temp   || 'neutral');
     }
@@ -294,6 +337,7 @@ function buildContrastPalette(count, excludeNames) {
     if (!used.has(c.name)) {
       picks.push(c);
       used.add(c.name);
+      blockGroup(c.name);
     }
   }
 
@@ -303,6 +347,9 @@ function buildContrastPalette(count, excludeNames) {
 function rollPalette() {
   if (!currentPalette || currentPalette.length !== paletteCount) {
     const baseExclude = new Set(currentBase ? [currentBase.name] : []);
+    if (currentBase) {
+      (BASE_ADJACENT[currentBase.name] || []).forEach(n => baseExclude.add(n));
+    }
     const palette = buildContrastPalette(paletteCount, baseExclude);
     currentPalette = palette || pickRandom(MAIN_BANK.filter(c => !baseExclude.has(c.name)), paletteCount);
     lockedIndexes.clear();
@@ -313,7 +360,10 @@ function rollPalette() {
     const lockedNames = new Set(
       [...lockedSet].map(i => currentPalette[i]?.name).filter(Boolean)
     );
-    if (currentBase) lockedNames.add(currentBase.name);
+    if (currentBase) {
+      lockedNames.add(currentBase.name);
+      (BASE_ADJACENT[currentBase.name] || []).forEach(n => lockedNames.add(n));
+    }
     const newColors = buildContrastPalette(paletteCount, lockedNames) || [];
     // pickedNames tracks every name used in this roll (locked + newly assigned)
     // so the per-slot fallback never repeats a color already in the palette
